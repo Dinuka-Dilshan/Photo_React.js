@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header";
+import Card from "./components/Card";
+import { Grid } from "@mui/material";
+import celebrities from "./data";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <Header />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Grid
+          container
+          lg={5}
+          style={{
+            marginTop: "4rem",
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          {celebrities.map((celebrity) => {
+            return (
+              <Grid item md={12}>
+                <Card
+                  image={celebrity.image}
+                  name={celebrity.name}
+                />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </div>
     </div>
   );
 }
